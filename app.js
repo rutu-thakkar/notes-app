@@ -50,15 +50,16 @@ yargs.command({
     describe: "Listing notes",
     handler: () => {
         console.log("Listing notes");
+        const notesloaded = notes.loadNotes()
+        console.log(notesloaded);
     }
 });
 
 yargs.command({
     command: "read",
     describe: "read notes",
-    handler: () => {
-        const notesloaded = notes.loadNotes()
-        console.log(notesloaded);
+    handler: (argv) => {
+        notes.readNotes(argv.title)
     }
 });
 

@@ -11,15 +11,13 @@ const addNotes = (title,body) => {
          return note.title === title
     });
 
-    // console.log(duplicated.length)
-
     if (duplicated.length === 0) {
         notes.push({
             title: title,
             body: body
         });
         saveNotes(notes)
-        console.log(chalk.green.italic.bold("New node duplicated"))
+        console.log(chalk.green.italic.bold("New note duplicated"))
     } else {
         console.log(chalk.red.italic.bold("Note Title taken"))
     }
@@ -60,10 +58,25 @@ const removeNote = (title) => {
     saveNotes(notes)
 }
 
+const readNotes = (title) => {
+    const notes = loadNotes()
+
+    searchresult = notes.filter((note) => {
+        return note.title === title
+    });
+
+    if(searchresult.length === 0) {
+        console.log("No Note having title \"", title, "\" is found");
+    } else {
+        console.log(searchresult);
+    }
+}
+
 module.exports = {
     getNotes: getNotes,
     addNotes: addNotes,
     removeNote: removeNote,
-    loadNotes: loadNotes
+    loadNotes: loadNotes,
+    readNotes: readNotes
 };
 
