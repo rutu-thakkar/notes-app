@@ -60,11 +60,10 @@ const removeNote = (title) => {
     saveNotes(notes)
 }
 
-
-
 module.exports = {
     getNotes: getNotes,
     addNotes: addNotes,
     removeNote: removeNote,
     loadNotes: loadNotes
 };
+
